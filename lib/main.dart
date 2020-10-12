@@ -10,6 +10,7 @@ class Kirana extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        fontFamily: 'Roboto',
         primaryColor: Colors.pink,
         accentColor: Colors.white,
       ),
