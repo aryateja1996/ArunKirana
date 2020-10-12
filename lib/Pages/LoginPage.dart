@@ -9,10 +9,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child:Row(
-        children: <Widgets> [
-          
-        ],
+      child: Row(
+        children: <Widget>[],
       ),
     );
+  }
 }
