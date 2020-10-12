@@ -8,29 +8,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(
-                Icons.help,
-                color: Colors.white,
-              ),
-              onPressed: null)
+    return Container(
+      child:Row(
+        children: <Widgets> [
+          
         ],
       ),
-      body: Container(
-        color: Colors.pink,
-        child: Row(
-          children: [
-            Text(
-              "Login",
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
     );
-  }
 }
