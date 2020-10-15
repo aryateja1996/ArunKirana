@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:Kirana/Pages/helpSupport.dart';
 
-class CircleButton extends StatefulWidget {
-  final IconData icon;
-  final double iconSize;
+import '../theme.dart';
 
+class CircleButton extends StatefulWidget {
   const CircleButton({
     Key key,
-    @required this.icon,
-    @required this.iconSize,
   }) : super(key: key);
 
   @override
@@ -22,13 +19,13 @@ class _CircleButtonState extends State<CircleButton> {
     return Container(
       margin: const EdgeInsets.all(6.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ThemeKirana.page,
         shape: BoxShape.circle,
       ),
       child: IconButton(
-        icon: Icon(widget.icon),
-        iconSize: widget.iconSize,
-        color: Colors.black,
+        icon: Icon(Icons.help),
+        iconSize: 30,
+        color: ThemeKirana.white,
         onPressed: () {
           Navigator.push(
             context,
