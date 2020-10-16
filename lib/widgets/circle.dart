@@ -23,9 +23,9 @@ class _CircleButtonState extends State<CircleButton> {
         shape: BoxShape.circle,
       ),
       child: IconButton(
-        icon: Icon(Icons.help),
+        icon: Icon(Icons.help_outline),
         iconSize: 30,
-        color: ThemeKirana.white,
+        color: ThemeKirana.black,
         onPressed: () {
           Navigator.push(
             context,

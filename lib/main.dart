@@ -1,5 +1,5 @@
+import 'package:Kirana/Pages/pages.dart';
 import 'package:flutter/material.dart';
-import 'Pages/LoginPage.dart';
 
 void main() {
   runApp(Kirana());
@@ -9,12 +9,13 @@ class Kirana extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Roboto',
-        primaryColor: Colors.pink,
+        fontFamily: 'Times New Roman',
+        primaryColor: Colors.white,
         accentColor: Colors.white,
       ),
-      home: LoginPage(),
+      home: SignUp(),
     );
   }
 }

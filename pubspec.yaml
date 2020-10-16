@@ -67,11 +67,12 @@ flutter:
          - asset: fonts/Roboto/Roboto-Bold.ttf
          - asset: fonts/Roboto/Roboto-medium.ttf
   #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+     - family: TImesNewRoman
+       fonts:
+        - asset: fonts/TimesNewRoman/times.ttf
+        - asset: fonts/TimesNewRoman/timesbd.ttf
+        - asset: fonts/TimesNewRoman/timesbi.ttf
+        - asset: fonts/TimesNewRoman/timesi.ttf
+  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

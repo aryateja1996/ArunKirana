@@ -1,5 +1,4 @@
-import 'dart:ui';
-//import 'textFields.dart';
+import 'package:Kirana/Pages/pages.dart';
 import 'package:Kirana/export.dart';
 import 'package:Kirana/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ThemeKirana.page,
+        elevation: 0,
+        actions: [
+          CircleButton(),
+        ],
+      ),
       backgroundColor: ThemeKirana.page,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -30,8 +36,25 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     TextLog(text: 'Login'),
                     SizedBox(height: 50),
-                    _Email(),
-                    _Password(),
+                    InputFields(
+                      encrypto: false,
+                      hint: 'Phone',
+                    ),
+                    InputFields(
+                      encrypto: true,
+                      hint: 'Password',
+                    ),
+                    Button15(text: 'Login'),
+                    Not(
+                      text: 'SIGN UP',
+                      msg: 'Not a Member ?  ',
+                      tap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUp()),
+                        );
+                      },
+                    )
                   ],
                 ),
               ),
@@ -41,90 +64,4 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-}
-
-Widget _Email() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        'Phone',
-        style: TextStyle(
-          color: ThemeKirana.white,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      SizedBox(height: 10),
-      Container(
-          alignment: Alignment.centerLeft,
-          margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-          decoration: BoxDecoration(
-            color: ThemeKirana.page,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          height: 60,
-          child: TextField(
-            keyboardType: TextInputType.phone,
-            style: TextStyle(
-              color: ThemeKirana.black,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14),
-              prefixIcon: Icon(
-                Icons.phone,
-                color: ThemeKirana.black,
-              ),
-              hintText: 'Phone',
-              hintStyle: TextStyle(
-                color: ThemeKirana.black,
-              ),
-            ),
-          )),
-    ],
-  );
-}
-
-Widget _Password() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        'Password',
-        style: TextStyle(
-          color: ThemeKirana.white,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      SizedBox(height: 10),
-      Container(
-          alignment: Alignment.centerLeft,
-          margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-          decoration: BoxDecoration(
-            color: ThemeKirana.page,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          height: 60,
-          child: TextField(
-            obscureText: true,
-            style: TextStyle(
-              color: ThemeKirana.black,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14),
-              prefixIcon: Icon(
-                Icons.panorama_fish_eye,
-                color: ThemeKirana.black,
-              ),
-              hintText: 'Password',
-              hintStyle: TextStyle(
-                color: ThemeKirana.black,
-              ),
-            ),
-          )),
-    ],
-  );
 }

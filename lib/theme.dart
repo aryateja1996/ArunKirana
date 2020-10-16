@@ -14,4 +14,6 @@ class ThemeKirana {
   static const Color uI = Color(0xFFF56464);
 
   static const Color bars = Color(0xFF636363);
+
+  static const Color btn = Color(0xFFF59393);
 }
