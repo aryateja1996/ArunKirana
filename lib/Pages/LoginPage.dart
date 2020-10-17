@@ -1,5 +1,6 @@
 import 'package:Kirana/Pages/pages.dart';
-import 'package:Kirana/export.dart';
+import 'package:Kirana/firebase.dart';
+import 'package:Kirana/theme.dart';
 import 'package:Kirana/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +11,24 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  Future<void> login() async {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      try {
+        form.save();
+        FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
+      } catch (e) {
+        print(e.message);
+      }
+    }
+  }
+
+  String _email;
+  String _password;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,15 +55,27 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     TextLog(text: 'Login'),
                     SizedBox(height: 50),
-                    InputFields(
-                      encrypto: false,
-                      hint: 'Phone',
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          InputFields(
+                            encrypto: false,
+                            hint: 'Email',
+                            fun: (input) => _email,
+                          ),
+                          InputFields(
+                            encrypto: true,
+                            hint: 'Password',
+                            fun: (input) => _password,
+                          ),
+                          Button15(
+                            text: 'Login',
+                            click: login,
+                          ),
+                        ],
+                      ),
                     ),
-                    InputFields(
-                      encrypto: true,
-                      hint: 'Password',
-                    ),
-                    Button15(text: 'Login'),
                     Not(
                       text: 'SIGN UP',
                       msg: 'Not a Member ?  ',

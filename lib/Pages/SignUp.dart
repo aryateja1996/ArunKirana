@@ -38,7 +38,7 @@ class SignUp extends StatelessWidget {
                       hint: 'Mobile',
                       type: TextInputType.number,
                     ),
-                    _Address(),
+                    address(),
                     Button15(text: 'SIGN UP'),
                     Not(
                       text: 'LOGIN',
@@ -61,7 +61,7 @@ class SignUp extends StatelessWidget {
   }
 }
 
-Widget _Address() {
+Widget address() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -81,10 +81,10 @@ Widget _Address() {
             color: ThemeKirana.white,
           ),
           decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderSide: BorderSide(width: 10.0, color: ThemeKirana.white),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(width: 2.50, color: ThemeKirana.white),
             ),
-            contentPadding: EdgeInsets.only(top: 14),
+            contentPadding: EdgeInsets.only(top: 14, left: 10),
             hintText: 'Address',
             hintStyle: TextStyle(
               color: ThemeKirana.white,

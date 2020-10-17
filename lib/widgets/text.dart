@@ -1,8 +1,7 @@
 import 'dart:ui';
 
+import 'package:Kirana/theme.dart';
 import 'package:flutter/material.dart';
-
-import 'package:Kirana/export.dart';
 
 class TextLog extends StatelessWidget {
   final text;
