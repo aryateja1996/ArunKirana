@@ -22,7 +22,9 @@ class _Button15State extends State<Button15> {
         //alignment: Alignment(10, 10),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.all(Radius.circular(50)),
+          borderRadius: BorderRadius.all(
+            Radius.circular(50),
+          ),
           color: ThemeKirana.btn,
         ),
         child: Center(

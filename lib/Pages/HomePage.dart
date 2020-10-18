@@ -15,10 +15,12 @@ class _HomeState extends State<Home> {
     super.initState();
     User firebaseUser = FirebaseAuth.instance.currentUser;
     if (firebaseUser == null) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => WelcomeScreen()),
-          (Route<dynamic> rr) => false);
+      Future.delayed(Duration.zero, () {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => WelcomeScreen()),
+            (Route<dynamic> rr) => false);
+      });
     } else {
       // User logged
     }

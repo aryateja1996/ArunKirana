@@ -21,7 +21,7 @@ class Kirana extends StatelessWidget {
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
-            //debugShowCheckedModeBanner: false,
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               fontFamily: 'Times New Roman',
               primaryColor: Colors.white,

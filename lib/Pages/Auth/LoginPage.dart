@@ -11,21 +11,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  Future<void> login() async {
-    final form = _formKey.currentState;
-    if (form.validate()) {
-      try {
-        form.save();
-        FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Home()));
-      } catch (e) {
-        print(e.message);
-      }
-    }
-  }
-
   String _email;
   String _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -94,5 +79,20 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  Future<void> login() async {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      try {
+        form.save();
+        FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home()));
+      } catch (e) {
+        print(e.message);
+      }
+    }
   }
 }
