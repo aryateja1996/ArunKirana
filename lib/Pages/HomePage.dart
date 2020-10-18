@@ -22,7 +22,10 @@ class _HomeState extends State<Home> {
             (Route<dynamic> rr) => false);
       });
     } else {
-      // User logged
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => Home()),
+          (Route<dynamic> rr) => false);
     }
   }
 
