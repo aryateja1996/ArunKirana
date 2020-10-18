@@ -1,6 +1,5 @@
+import 'package:Kirana/Pages/pages.dart';
 import 'package:flutter/material.dart';
-
-import 'package:Kirana/Pages/helpSupport.dart';
 
 import '../theme.dart';
 

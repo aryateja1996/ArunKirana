@@ -1,4 +1,4 @@
-import 'package:Kirana/Pages/LoginPage.dart';
+import 'package:Kirana/Pages/pages.dart';
 import 'package:Kirana/theme.dart';
 import 'package:Kirana/widgets/widgets.dart';
 import 'package:flutter/material.dart';
