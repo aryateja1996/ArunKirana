@@ -4,11 +4,23 @@ export 'Welcome.dart';
 
 export 'HomePage.dart';
 
-// exports for Authentication
+// exports for Logins
 
-export 'Auth/LoginPage.dart';
+export 'Auth/logins/EmailLogin.dart';
 
-export "Auth/SignUp.dart";
+export 'Auth/logins/FbLogin.dart';
+
+export 'Auth/logins/GoogleLogin.dart';
+
+export 'Auth/logins/PhoneLogin.dart';
+
+export 'Auth/logins/ChooseLogin.dart';
+
+//exports for SignUp
+
+export 'Auth/signups/SignUp.dart';
+
+//exports for Otp display page
 
 export 'Auth/OTP.dart';
 

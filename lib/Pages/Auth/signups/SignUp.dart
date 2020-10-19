@@ -46,7 +46,8 @@ class SignUp extends StatelessWidget {
                       tap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(
+                              builder: (context) => EmailLoginPage()),
                         );
                       },
                     )

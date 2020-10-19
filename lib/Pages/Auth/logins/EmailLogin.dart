@@ -5,12 +5,12 @@ import 'package:Kirana/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class LoginPage extends StatefulWidget {
+class EmailLoginPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _EmailLoginPageState createState() => _EmailLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _EmailLoginPageState extends State<EmailLoginPage> {
   String _email;
   String _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
               width: double.infinity,
               child: SingleChildScrollView(
                 physics: AlwaysScrollableScrollPhysics(),
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
+                //padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           Button15(
                             text: 'Login',
-                            click: login,
+                            click: loginemail,
                           ),
                         ],
                       ),
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future<void> login() async {
+  Future<void> loginemail() async {
     final form = _formKey.currentState;
     if (form.validate()) {
       try {

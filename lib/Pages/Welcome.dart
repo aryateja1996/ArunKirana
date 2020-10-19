@@ -10,8 +10,6 @@ class WelcomeScreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        //padding: EdgeInsets.symmetric(horizontal: 25),
-        //alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -45,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LoginPage(),
+                        builder: (context) => ChooseLogin(),
                       ));
                 },
                 color: ThemeKirana.page,
@@ -73,7 +71,7 @@ class WelcomeScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SignUp(),
+                        builder: (context) => ChooseLogin(),
                       ));
                 },
                 color: ThemeKirana.page,

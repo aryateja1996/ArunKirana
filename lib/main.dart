@@ -27,7 +27,7 @@ class Kirana extends StatelessWidget {
               primaryColor: Colors.white,
               accentColor: Colors.white,
             ),
-            home: Home(),
+            home: ChooseLogin(),
           );
         }
 
