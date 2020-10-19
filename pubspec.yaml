@@ -31,6 +31,10 @@ dependencies:
   firebase_storage: ^4.0.1
         #firebase fire store
   cloud_firestore: ^0.14.1+3
+        #Google Authentication
+  google_sign_in: "^4.5.1"
+      # Facebook Authentication
+  flutter_facebook_auth: "^0.3.0"      
         #SignIn Button
   flutter_signin_button: ^1.1.0
 

@@ -1,14 +1,8 @@
 import 'package:Kirana/Pages/pages.dart';
-import 'package:Kirana/firebase.dart';
 import 'package:Kirana/theme.dart';
 import 'package:flutter/material.dart';
 
-class ChooseLogin extends StatefulWidget {
-  @override
-  _ChooseLoginState createState() => _ChooseLoginState();
-}
-
-class _ChooseLoginState extends State<ChooseLogin> {
+class ChooseSignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +35,7 @@ class _ChooseLoginState extends State<ChooseLogin> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => EmailLoginPage()),
+                        MaterialPageRoute(builder: (context) => ESignUp()),
                       );
                     },
                     icon: Icons.email,
@@ -54,7 +47,12 @@ class _ChooseLoginState extends State<ChooseLogin> {
                     Buttons.Google,
                     text: 'Use Google',
                     onPressed: () {
-                      googleSignIn();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GSign(),
+                        ),
+                      );
                     },
                   ),
                   Divider(),
@@ -62,20 +60,12 @@ class _ChooseLoginState extends State<ChooseLogin> {
                     Buttons.FacebookNew,
                     text: 'Use Facebook',
                     onPressed: () {
-                      //   Future<UserCredential> signInWithFacebook() async {
-                      //     // Trigger the sign-in flow
-                      //     final LoginResult result =
-                      //         await FacebookAuth.instance.login();
-
-                      //     // Create a credential from the access token
-                      //     final FacebookAuthCredential facebookAuthCredential =
-                      //         FacebookAuthProvider.credential(
-                      //             result.accessToken.token);
-
-                      //     // Once signed in, return the UserCredential
-                      //     return await FirebaseAuth.instance
-                      //         .signInWithCredential(facebookAuthCredential);
-                      //   }
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FbSign(),
+                        ),
+                      );
                     },
                   ),
                   Divider(),
@@ -84,7 +74,7 @@ class _ChooseLoginState extends State<ChooseLogin> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PhoneLogin()),
+                        MaterialPageRoute(builder: (context) => PSign()),
                       );
                     },
                     icon: Icons.phone,
@@ -96,26 +86,6 @@ class _ChooseLoginState extends State<ChooseLogin> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  showErrDialog(BuildContext context, String err) {
-    // to hide the keyboard, if it is still p
-    FocusScope.of(context).requestFocus(new FocusNode());
-    return showDialog(
-      context: context,
-      child: AlertDialog(
-        title: Text("Error"),
-        content: Text(err),
-        actions: <Widget>[
-          OutlineButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text("Ok"),
-          ),
-        ],
       ),
     );
   }

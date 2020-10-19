@@ -18,7 +18,15 @@ export 'Auth/logins/ChooseLogin.dart';
 
 //exports for SignUp
 
-export 'Auth/signups/SignUp.dart';
+export 'Auth/signups/ESignUp.dart';
+
+export 'Auth/signups/GSignUp.dart';
+
+export 'Auth/signups/FbSignUp.dart';
+
+export 'Auth/signups/PhoneSignUp.dart';
+
+export 'Auth/signups/ChooseSignUp.dart';
 
 //exports for Otp display page
 

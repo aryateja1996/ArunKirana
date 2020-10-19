@@ -22,22 +22,41 @@ class _HomeState extends State<Home> {
             (Route<dynamic> rr) => false);
       });
     } else {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => Home()),
-          (Route<dynamic> rr) => false);
+      // Navigator.pushAndRemoveUntil(
+      //     context,
+      //     MaterialPageRoute(builder: (context) => Home()),
+      //     (Route<dynamic> rr) => false);
     }
   }
 
   Widget build(BuildContext context) {
+    User user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       backgroundColor: ThemeKirana.page,
       appBar: AppBar(
-        title: Text('Home'),
+        title: user.displayName != null
+            ? Text(user.displayName)
+            : Text(user.email),
         centerTitle: true,
       ),
       body: Center(
-        child: Text('This is home page'),
+        child: Column(
+          children: [
+            RaisedButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WelcomeScreen(),
+                    ),
+                    (Route<dynamic> rr) => false);
+              },
+              child: Text('Sign Out'),
+            ),
+            Text(user.email)
+          ],
+        ),
       ),
     );
   }

@@ -9,7 +9,12 @@ class InputFields extends StatefulWidget {
   final valid;
 
   const InputFields(
-      {Key key, this.encrypto, this.hint, this.type, this.fun, this.valid});
+      {Key key,
+      this.encrypto,
+      this.hint,
+      this.type,
+      @required this.fun,
+      this.valid});
 
   @override
   _InputFieldsState createState() => _InputFieldsState();

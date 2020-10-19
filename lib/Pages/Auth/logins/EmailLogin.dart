@@ -47,12 +47,16 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
                           InputFields(
                             encrypto: false,
                             hint: 'Email',
-                            fun: (input) => _email,
+                            fun: (input) {
+                              _email = input;
+                            },
                           ),
                           InputFields(
                             encrypto: true,
                             hint: 'Password',
-                            fun: (input) => _password,
+                            fun: (input) {
+                              _password = input;
+                            },
                           ),
                           Button15(
                             text: 'Login',
@@ -67,7 +71,7 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
                       tap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignUp()),
+                          MaterialPageRoute(builder: (context) => ESignUp()),
                         );
                       },
                     )

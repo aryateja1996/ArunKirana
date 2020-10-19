@@ -71,7 +71,7 @@ class WelcomeScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ChooseLogin(),
+                        builder: (context) => ChooseSignUp(),
                       ));
                 },
                 color: ThemeKirana.page,
