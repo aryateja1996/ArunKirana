@@ -21,12 +21,7 @@ class _HomeState extends State<Home> {
             MaterialPageRoute(builder: (context) => WelcomeScreen()),
             (Route<dynamic> rr) => false);
       });
-    } else {
-      // Navigator.pushAndRemoveUntil(
-      //     context,
-      //     MaterialPageRoute(builder: (context) => Home()),
-      //     (Route<dynamic> rr) => false);
-    }
+    } else {}
   }
 
   Widget build(BuildContext context) {
@@ -34,13 +29,12 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: ThemeKirana.page,
       appBar: AppBar(
-        title: user.displayName != null
-            ? Text(user.displayName)
-            : Text(user.email),
+        title: Text('${user.phoneNumber}'),
         centerTitle: true,
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             RaisedButton(
               onPressed: () {
@@ -54,7 +48,7 @@ class _HomeState extends State<Home> {
               },
               child: Text('Sign Out'),
             ),
-            Text(user.email)
+            //Text('Details'),
           ],
         ),
       ),

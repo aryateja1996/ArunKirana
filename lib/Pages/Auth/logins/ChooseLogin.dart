@@ -61,22 +61,7 @@ class _ChooseLoginState extends State<ChooseLogin> {
                   SignInButton(
                     Buttons.FacebookNew,
                     text: 'Use Facebook',
-                    onPressed: () {
-                      //   Future<UserCredential> signInWithFacebook() async {
-                      //     // Trigger the sign-in flow
-                      //     final LoginResult result =
-                      //         await FacebookAuth.instance.login();
-
-                      //     // Create a credential from the access token
-                      //     final FacebookAuthCredential facebookAuthCredential =
-                      //         FacebookAuthProvider.credential(
-                      //             result.accessToken.token);
-
-                      //     // Once signed in, return the UserCredential
-                      //     return await FirebaseAuth.instance
-                      //         .signInWithCredential(facebookAuthCredential);
-                      //   }
-                    },
+                    onPressed: () {},
                   ),
                   Divider(),
                   SignInButtonBuilder(
@@ -84,7 +69,9 @@ class _ChooseLoginState extends State<ChooseLogin> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PhoneLogin()),
+                        MaterialPageRoute(
+                          builder: (context) => PhoneLogin(),
+                        ),
                       );
                     },
                     icon: Icons.phone,
@@ -118,5 +105,20 @@ class _ChooseLoginState extends State<ChooseLogin> {
         ],
       ),
     );
+  }
+
+  Future<UserCredential> signInWithFacebook() async {
+    // Trigger the sign-in flow
+    final LoginResult result = await FacebookAuth.instance.login();
+
+    // Create a credential from the access token
+    final FacebookAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(result.accessToken.token);
+
+    // Once signed in, return the UserCredential
+    Future<UserCredential> userCredential =
+        FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+
+    return userCredential;
   }
 }
