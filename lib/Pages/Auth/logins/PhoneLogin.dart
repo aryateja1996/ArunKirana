@@ -130,7 +130,7 @@ class PhoneLogin extends StatelessWidget {
                     textColor: Colors.white,
                     padding: EdgeInsets.all(16),
                     onPressed: () {
-                      final phone = _phoneController.text.trim();
+                      final phone = '+91' + (_phoneController.text.trim());
 
                       loginUser(phone, context);
                     },

@@ -25,11 +25,30 @@ class _HomeState extends State<Home> {
   }
 
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     User user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       backgroundColor: ThemeKirana.page,
+      drawer: Drawer(
+        child: Scaffold(
+          backgroundColor: ThemeKirana.bars,
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 300,
+                  color: ThemeKirana.white,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
       appBar: AppBar(
-        title: Text('${user.phoneNumber}'),
+        title: Text('Hello'),
         centerTitle: true,
       ),
       body: Center(
