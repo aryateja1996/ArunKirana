@@ -31,19 +31,30 @@ class _HomeState extends State<Home> {
       backgroundColor: ThemeKirana.page,
       drawer: Drawer(
         child: Scaffold(
-          backgroundColor: ThemeKirana.bars,
-          body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 300,
-                  color: ThemeKirana.white,
-                )
-              ],
-            ),
+          body: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('Drawer Header'),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+              ),
+              ListTile(
+                title: Text('Item 1'),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+              ListTile(
+                title: Text('Item 2'),
+                onTap: () {
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+            ],
           ),
         ),
       ),
