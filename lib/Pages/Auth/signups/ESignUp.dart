@@ -13,10 +13,12 @@ class ESignUp extends StatefulWidget {
 class _ESignUpState extends State<ESignUp> {
   String _email;
 
+  // ignore: unused_field
   String _name;
 
   String _password;
 
+  // ignore: unused_field
   String _addresses;
 
   final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
@@ -106,21 +108,23 @@ class _ESignUpState extends State<ESignUp> {
 
   Future<void> emailSignup() async {
     final form = _formKey2.currentState;
+    // ignore: unused_local_variable
     User user = FirebaseAuth.instance.currentUser;
     if (form.validate()) {
       try {
         form.save();
         FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: _email, password: _password);
-        await DatabaseService(uid: user.uid).updateUserData(_name, _addresses);
-        Navigator.pushAndRemoveUntil(
+          Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => EmailLoginPage()),
             (route) => false);
       } catch (e) {
         print(e.message);
       }
+
     }
+    
   }
 }
 

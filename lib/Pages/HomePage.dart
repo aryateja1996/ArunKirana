@@ -1,5 +1,6 @@
 import 'package:Kirana/Pages/pages.dart';
 import 'package:Kirana/theme.dart';
+import 'package:Kirana/widgets/Drawer.dart';
 import 'package:flutter/material.dart';
 
 import '../firebase.dart';
@@ -29,35 +30,7 @@ class _HomeState extends State<Home> {
     User user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       backgroundColor: ThemeKirana.page,
-      drawer: Drawer(
-        child: Scaffold(
-          body: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Text('Drawer Header'),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-              ),
-              ListTile(
-                title: Text('Item 1'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-              ListTile(
-                title: Text('Item 2'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: Drawerwig(),
       appBar: AppBar(
         title: Text('Hello'),
         centerTitle: true,
