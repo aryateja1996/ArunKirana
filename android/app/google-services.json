@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:605552956090:android:51f41b7dfbf4165b34e883",
+        "mobilesdk_app_id": "1:605552956090:android:30a84098716101e634e883",
         "android_client_info": {
-          "package_name": "com.example.Kirana"
+          "package_name": "com.indiworks.Kirana"
         }
       },
       "oauth_client": [

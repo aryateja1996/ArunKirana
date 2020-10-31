@@ -32,10 +32,6 @@ export 'Pages/Auth/signups/PhoneSignUp.dart';
 
 export 'Pages/Auth/signups/ChooseSignUp.dart';
 
-//exports for Otp display page
-
-export 'Pages/Auth/OTP.dart';
-
 //exports for Help and Support
 
 export 'Pages/HelpAndSupport/helpSupport.dart';

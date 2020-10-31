@@ -1,4 +1,4 @@
-package com.example.Kirana
+package com.indiworks.Kirana
 
 import io.flutter.embedding.android.FlutterActivity
 

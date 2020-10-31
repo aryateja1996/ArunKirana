@@ -21,6 +21,8 @@ class _ESignUpState extends State<ESignUp> {
 
   final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
 
+  var result;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,24 +106,26 @@ class _ESignUpState extends State<ESignUp> {
     );
   }
 
-  Future<void> emailSignup() async {
+  void emailSignup() async {
     final form = _formKey2.currentState;
     // ignore: unused_local_variable
     User user = FirebaseAuth.instance.currentUser;
     if (form.validate()) {
       try {
         form.save();
-        FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: _email, password: _password);
+        FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _email,
+          password: _password,
+        );
+        FirebaseAuth.instance.authStateChanges().listen((user) {
+          if (user != null) {
+            print('Counter');
+          }
+        });
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => EmailLoginPage()),
             (route) => false);
-        if (user != null) {
-          //user.set
-          // ignore: unused_local_variable
-          FirebaseFirestore firestore = FirebaseFirestore.instance;
-        } else {}
       } catch (e) {
         print(e.message);
       }
