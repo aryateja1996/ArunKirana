@@ -1,12 +1,17 @@
-import 'package:Kirana/firebase.dart';
-import 'package:Kirana/theme.dart';
-import 'package:Kirana/widgets/icons.dart';
+import 'package:Kirana/customExports.dart';
 import 'package:flutter/material.dart';
 
-class Drawerwig extends StatelessWidget {
+class Drawerwig extends StatefulWidget {
+  @override
+  _DrawerwigState createState() => _DrawerwigState();
+}
+
+class _DrawerwigState extends State<Drawerwig> {
   final User user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
+    double _height = MediaQuery.of(context).size.height;
     return Drawer(
       child: Scaffold(
         backgroundColor: ThemeKirana.bars,
@@ -14,7 +19,7 @@ class Drawerwig extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             Container(
-              height: 500,
+              height: _height * 0.4,
               child: DrawerHeader(
                 child: Column(
                   children: <Widget>[
@@ -105,19 +110,15 @@ class Drawerwig extends StatelessWidget {
                 // ...
               },
             ),
-            SizedBox(height: 20),
+            SizedBox(height: _height * 0.01),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Icon(MyIcons.wtsup),
-                Divider(),
+                Icon(Icons.message),
                 Icon(Icons.cloud_circle),
-                Divider(
-                  thickness: 100,
-                  color: ThemeKirana.black,
-                ),
                 Icon(Icons.cloud_circle),
+                SizedBox(height: _height * 0.2)
               ],
             )
           ],

@@ -1,5 +1,5 @@
-import 'package:Kirana/theme.dart';
 //import 'package:Kirana/widgets/Input_Fields.dart';
+import 'package:Kirana/customExports.dart';
 import 'package:flutter/material.dart';
 
 class Otp extends StatelessWidget {

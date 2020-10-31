@@ -1,6 +1,4 @@
-import 'package:Kirana/Pages/pages.dart';
-import 'package:Kirana/firebase.dart';
-import 'package:Kirana/theme.dart';
+import 'package:Kirana/customExports.dart';
 import 'package:flutter/material.dart';
 
 class ChooseLogin extends StatefulWidget {
@@ -49,20 +47,20 @@ class _ChooseLoginState extends State<ChooseLogin> {
                     width: 220.0,
                     text: 'Get Going With Email',
                   ),
-                  Divider(),
-                  SignInButton(
-                    Buttons.Google,
-                    text: 'Use Google',
-                    onPressed: () {
-                      googleSignIn();
-                    },
-                  ),
-                  Divider(),
-                  SignInButton(
-                    Buttons.FacebookNew,
-                    text: 'Use Facebook',
-                    onPressed: () {},
-                  ),
+                  // Divider(),
+                  // SignInButton(
+                  //   Buttons.Google,
+                  //   text: 'Use Google',
+                  //   onPressed: () {
+                  //     googleSignIn();
+                  //   },
+                  // ),
+                  // Divider(),
+                  // SignInButton(
+                  //   Buttons.FacebookNew,
+                  //   text: 'Use Facebook',
+                  //   onPressed: signInWithFacebook,
+                  // ),
                   Divider(),
                   SignInButtonBuilder(
                     backgroundColor: Colors.blueGrey[700],
@@ -87,26 +85,7 @@ class _ChooseLoginState extends State<ChooseLogin> {
     );
   }
 
-  showErrDialog(BuildContext context, String err) {
-    // to hide the keyboard, if it is still p
-    FocusScope.of(context).requestFocus(new FocusNode());
-    return showDialog(
-      context: context,
-      child: AlertDialog(
-        title: Text("Error"),
-        content: Text(err),
-        actions: <Widget>[
-          OutlineButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text("Ok"),
-          ),
-        ],
-      ),
-    );
-  }
-
+  // ignore: missing_return
   Future<UserCredential> signInWithFacebook() async {
     // Trigger the sign-in flow
     final LoginResult result = await FacebookAuth.instance.login();
@@ -116,9 +95,25 @@ class _ChooseLoginState extends State<ChooseLogin> {
         FacebookAuthProvider.credential(result.accessToken.token);
 
     // Once signed in, return the UserCredential
-    Future<UserCredential> userCredential =
-        FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 
-    return userCredential;
+    FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+
+    User user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Home(),
+          ),
+          (route) => false);
+    } else {
+      // user is not logged in
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChooseLogin(),
+          ),
+          (route) => false);
+    }
   }
 }

@@ -1,5 +1,4 @@
-import 'package:Kirana/Pages/pages.dart';
-import 'package:Kirana/theme.dart';
+import 'package:Kirana/customExports.dart';
 import 'package:flutter/material.dart';
 
 class ChooseSignUp extends StatelessWidget {
@@ -42,32 +41,22 @@ class ChooseSignUp extends StatelessWidget {
                     width: 220.0,
                     text: 'Get Going With Email',
                   ),
-                  Divider(),
-                  SignInButton(
-                    Buttons.Google,
-                    text: 'Use Google',
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => GSign(),
-                        ),
-                      );
-                    },
-                  ),
-                  Divider(),
-                  SignInButton(
-                    Buttons.FacebookNew,
-                    text: 'Use Facebook',
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FbSign(),
-                        ),
-                      );
-                    },
-                  ),
+                  // Divider(),
+                  // SignInButton(
+                  //   Buttons.Google,
+                  //   text: 'Use Google',
+                  //   onPressed: () {
+
+                  //   },
+                  // ),
+                  // Divider(),
+                  // SignInButton(
+                  //   Buttons.FacebookNew,
+                  //   text: 'Use Facebook',
+                  //   onPressed: () {
+
+                  //   },
+                  // ),
                   Divider(),
                   SignInButtonBuilder(
                     backgroundColor: Colors.blueGrey[700],

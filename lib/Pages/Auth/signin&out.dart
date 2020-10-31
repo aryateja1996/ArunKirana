@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Kirana/firebase.dart';
+import 'package:Kirana/customExports.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
 final gooleSignIn = GoogleSignIn();

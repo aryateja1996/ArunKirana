@@ -1,7 +1,5 @@
-import 'package:Kirana/Pages/pages.dart';
-import 'package:Kirana/firebase.dart';
-import 'package:Kirana/theme.dart';
-import 'package:Kirana/widgets/widgets.dart';
+import 'package:Kirana/customExports.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -90,10 +88,14 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
     if (form.validate()) {
       try {
         form.save();
-        FirebaseAuth.instance
+        await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Home()));
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Home(),
+            ),
+            (route) => false);
       } catch (e) {
         print(e.message);
       }

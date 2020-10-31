@@ -1,6 +1,5 @@
-import 'package:Kirana/Pages/pages.dart';
 import 'package:flutter/material.dart';
-import 'package:Kirana/firebase.dart';
+import 'package:Kirana/customExports.dart';
 
 void main() {
   runApp(Kirana());

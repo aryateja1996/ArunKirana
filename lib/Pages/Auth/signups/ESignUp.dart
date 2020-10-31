@@ -1,7 +1,5 @@
-import 'package:Kirana/Pages/pages.dart';
-import 'package:Kirana/firebase.dart';
-import 'package:Kirana/theme.dart';
-import 'package:Kirana/widgets/widgets.dart';
+import 'package:Kirana/customExports.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -115,16 +113,19 @@ class _ESignUpState extends State<ESignUp> {
         form.save();
         FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: _email, password: _password);
-          Navigator.pushAndRemoveUntil(
+        Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => EmailLoginPage()),
             (route) => false);
+        if (user != null) {
+          //user.set
+          // ignore: unused_local_variable
+          FirebaseFirestore firestore = FirebaseFirestore.instance;
+        } else {}
       } catch (e) {
         print(e.message);
       }
-
     }
-    
   }
 }
 

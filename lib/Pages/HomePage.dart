@@ -1,9 +1,7 @@
-import 'package:Kirana/Pages/pages.dart';
-import 'package:Kirana/theme.dart';
 import 'package:Kirana/widgets/Drawer.dart';
 import 'package:flutter/material.dart';
 
-import '../firebase.dart';
+import '../customExports.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -34,6 +32,19 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Hello'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Cart(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
