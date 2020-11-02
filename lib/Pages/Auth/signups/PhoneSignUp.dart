@@ -2,8 +2,14 @@ import 'package:Kirana/customExports.dart';
 
 import 'package:flutter/material.dart';
 
-class PSign extends StatelessWidget {
+class PSign extends StatefulWidget {
+  @override
+  _PSignState createState() => _PSignState();
+}
+
+class _PSignState extends State<PSign> {
   final _phoneController = TextEditingController();
+
   final _codeController = TextEditingController();
 
   Future<bool> loginUser(String phone, BuildContext context) async {
@@ -86,6 +92,9 @@ class PSign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+      
+      ),
       backgroundColor: ThemeKirana.page,
       body: SingleChildScrollView(
         child: Container(

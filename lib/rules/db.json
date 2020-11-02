@@ -1,0 +1,22 @@
+{
+    "rules": {
+        "users": {
+            "$user_id": {
+                ".read": "auth != null",
+                ".write": "auth != null"
+            },
+            "$user_name": {
+                ".read": "auth != null",
+                ".write": "auth != null"
+            },
+            "$user_email": {
+                ".read": "auth != null",
+                ".write": "auth != null"
+            },
+            "$user_address": {
+                ".read": "auth != null",
+                ".write": "auth != null"
+            }
+        }
+    }
+}

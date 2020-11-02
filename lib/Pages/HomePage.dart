@@ -1,7 +1,10 @@
+import 'package:Kirana/customExports.dart';
 import 'package:Kirana/widgets/Drawer.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;  
 import 'package:flutter/material.dart';
 
-import '../customExports.dart';
+
 
 class Home extends StatefulWidget {
   @override
@@ -20,12 +23,17 @@ class _HomeState extends State<Home> {
             MaterialPageRoute(builder: (context) => WelcomeScreen()),
             (Route<dynamic> rr) => false);
       });
-    } else {}
+    } else {
+      User user = FirebaseAuth.instance.currentUser;
+      FirebaseFirestore.instance.collection("user").doc(user.uid).get();
+    }
   }
 
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    User user = FirebaseAuth.instance.currentUser;
+// ignore: unused_local_variable
+FirebaseStorage storage = FirebaseStorage.instance;
+   
+
     return Scaffold(
       backgroundColor: ThemeKirana.page,
       drawer: Drawerwig(),
@@ -46,26 +54,20 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            RaisedButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WelcomeScreen(),
-                    ),
-                    (Route<dynamic> rr) => false);
-              },
-              child: Text('Sign Out'),
-            ),
-            //Text('Details'),
-          ],
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+
 }

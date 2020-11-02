@@ -10,7 +10,16 @@ class Kirana extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       // Initialize FlutterFire
-      future: Firebase.initializeApp(),
+      future: Firebase.initializeApp(
+        options: FirebaseOptions(
+            appId: '1:605552956090:android:30a84098716101e634e883',
+            apiKey: 'AIzaSyCUiP8fai99gxoUXTpcgyh9DFsyK-j0uos',
+            authDomain: 'kirana-app-292806.firebaseapp.com',
+            storageBucket: 'gs://kirana-app-292806.appspot.com',
+            projectId: 'kirana-app-292806',
+            messagingSenderId: '605552956090',
+            databaseURL: 'https://kirana-app-292806.firebaseio.com/'),
+      ),
       builder: (context, snapshot) {
         // Check for errors
         if (snapshot.hasError) {
