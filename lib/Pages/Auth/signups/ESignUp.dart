@@ -26,244 +26,245 @@ class _ESignUpState extends State<ESignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          actions: [
-            CircleButton(),
-          ],
-          elevation: 0,
-          backgroundColor: ThemeKirana.page,
-        ),
+      appBar: AppBar(
+        actions: [
+          CircleButton(),
+        ],
+        elevation: 0,
         backgroundColor: ThemeKirana.page,
-        body: AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.light,
-          child: Container(
-            child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              child: Column(
-                children: [
-                  TextLog(
-                    text: "Sign up",
-                  ),
-                  SizedBox(height: 30),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Form(
-                      key: _formKey2,
-                      child: Column(
-                        children: [
-                          TextFormField(
-                            keyboardType: TextInputType.name,
-                            onSaved: (input) {
-                              _name = input;
-                            },
-                            decoration: InputDecoration(
-                              labelText: "Name",
-                              labelStyle: TextStyle(color: Colors.white),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white38,
-                                width: 4,
-                                style: BorderStyle.solid,
+      ),
+      backgroundColor: ThemeKirana.page,
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: Container(
+          child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                TextLog(
+                  text: "Sign up",
+                ),
+                SizedBox(height: 30),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Form(
+                    key: _formKey2,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          keyboardType: TextInputType.name,
+                          onSaved: (input) {
+                            _name = input;
+                          },
+                          decoration: InputDecoration(
+                            labelText: "Name",
+                            labelStyle: TextStyle(color: Colors.white),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white38,
+                              width: 4,
+                              style: BorderStyle.solid,
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white,
+                              width: 3,
+                            )),
+                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            labelText: "Email",
+                            labelStyle: TextStyle(color: Colors.white),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white38,
+                              width: 4,
+                              style: BorderStyle.solid,
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white,
+                              width: 3,
+                            )),
+                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          ),
+                          onSaved: (input) {
+                            _email = input;
+                          },
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.phone,
+                          decoration: InputDecoration(
+                            labelText: "Phone",
+                            labelStyle: TextStyle(color: Colors.white),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white38,
+                              width: 4,
+                              style: BorderStyle.solid,
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white,
+                              width: 3,
+                            )),
+                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          ),
+                          onSaved: (input) {
+                            _phone = input;
+                          },
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          maxLines: 10,
+                          keyboardType: TextInputType.streetAddress,
+                          decoration: InputDecoration(
+                            labelText: "Address",
+                            labelStyle: TextStyle(color: Colors.white),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white38,
+                              width: 4,
+                              style: BorderStyle.solid,
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white,
+                              width: 3,
+                            )),
+                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          ),
+                          onSaved: (input) {
+                            _address = input;
+                          },
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            labelText: "Password",
+                            labelStyle: TextStyle(color: Colors.white),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white38,
+                              width: 4,
+                              style: BorderStyle.solid,
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white,
+                              width: 3,
+                            )),
+                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          ),
+                          onSaved: (input) {
+                            _password = input;
+                          },
+                          obscureText: true,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            labelText: "Confrim Password",
+                            labelStyle: TextStyle(color: Colors.white),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white38,
+                              width: 4,
+                              style: BorderStyle.solid,
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white,
+                              width: 3,
+                            )),
+                            floatingLabelBehavior: FloatingLabelBehavior.auto,
+                          ),
+                          onSaved: (input) {
+                            if (_password == input) {
+                              print('ok');
+                            } else {
+                              _scaffoldKey.currentState.showSnackBar(
+                                SnackBar(
+                                  content: Text("Password  Did not match"),
+                                ),
+                              );
+                            }
+                          },
+                          obscureText: true,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          child: RaisedButton(
+                              onPressed: emailSignup,
+                              child: Text(
+                                'Start Your Journey With Us',
                               )),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white,
-                                width: 3,
-                              )),
-                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                        ),
+                        SizedBox(height: 25),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SignInButtonBuilder(
+                              backgroundColor: Colors.blueGrey[700],
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PSign()),
+                                );
+                              },
+                              icon: Icons.phone,
+                              width: 220.0,
+                              text: 'Use Phone',
                             ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              labelText: "Email",
-                              labelStyle: TextStyle(color: Colors.white),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white38,
-                                width: 4,
-                                style: BorderStyle.solid,
-                              )),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white,
-                                width: 3,
-                              )),
-                              floatingLabelBehavior: FloatingLabelBehavior.auto,
+                            SizedBox(
+                              width: 12,
                             ),
-                            onSaved: (input) {
-                              _email = input;
-                            },
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                              labelText: "Phone",
-                              labelStyle: TextStyle(color: Colors.white),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white38,
-                                width: 4,
-                                style: BorderStyle.solid,
-                              )),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white,
-                                width: 3,
-                              )),
-                              floatingLabelBehavior: FloatingLabelBehavior.auto,
-                            ),
-                            onSaved: (input) {
-                              _phone = input;
-                            },
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            maxLines: 10,
-                            keyboardType: TextInputType.streetAddress,
-                            decoration: InputDecoration(
-                              labelText: "Address",
-                              labelStyle: TextStyle(color: Colors.white),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white38,
-                                width: 4,
-                                style: BorderStyle.solid,
-                              )),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white,
-                                width: 3,
-                              )),
-                              floatingLabelBehavior: FloatingLabelBehavior.auto,
-                            ),
-                            onSaved: (input) {
-                              _address = input;
-                            },
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                              labelText: "Password",
-                              labelStyle: TextStyle(color: Colors.white),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white38,
-                                width: 4,
-                                style: BorderStyle.solid,
-                              )),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white,
-                                width: 3,
-                              )),
-                              floatingLabelBehavior: FloatingLabelBehavior.auto,
-                            ),
-                            onSaved: (input) {
-                              _password = input;
-                            },
-                            obscureText: true,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                              labelText: "Confrim Password",
-                              labelStyle: TextStyle(color: Colors.white),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white38,
-                                width: 4,
-                                style: BorderStyle.solid,
-                              )),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white,
-                                width: 3,
-                              )),
-                              floatingLabelBehavior: FloatingLabelBehavior.auto,
-                            ),
-                            onSaved: (input) {
-                              if (_password == input) {
-                                print('ok');
-                              } else {
-                                _scaffoldKey.currentState.showSnackBar(
-                                  SnackBar(
-                                    content: Text("Password  Did not match"),
+                            SignInButtonBuilder(
+                              backgroundColor: Colors.blueGrey[700],
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => EmailLoginPage(),
                                   ),
                                 );
-                              }
-                            },
-                            obscureText: true,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            child: RaisedButton(
-                                onPressed: emailSignup,
-                                child: Text(
-                                  'Start Your Journey With Us',
-                                )),
-                          ),
-                          SizedBox(height: 25),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SignInButtonBuilder(
-                                backgroundColor: Colors.blueGrey[700],
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => PSign()),
-                                  );
-                                },
-                                icon: Icons.phone,
-                                width: 220.0,
-                                text: 'Use Phone',
-                              ),
-                              SizedBox(
-                                width: 12,
-                              ),
-                              SignInButtonBuilder(
-                                backgroundColor: Colors.blueGrey[700],
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => EmailLoginPage(),
-                                    ),
-                                  );
-                                },
-                                icon: Icons.email,
-                                width: 220.0,
-                                text: 'Login',
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                              },
+                              icon: Icons.email,
+                              width: 220.0,
+                              text: 'Login',
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   void emailSignup() async {
@@ -281,8 +282,6 @@ class _ESignUpState extends State<ESignUp> {
       } catch (e) {
         print(e.message);
       }
-      
-     
 
       FirebaseFirestore.instance.collection("user").doc(result.user.uid).set({
         "username": _name,

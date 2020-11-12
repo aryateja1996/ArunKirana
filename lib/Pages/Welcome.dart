@@ -29,7 +29,6 @@ class WelcomeScreen extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               alignment: Alignment.center,
-              // margin: EdgeInsets.fromLTRB(0, 200, 0, 0),
               child: RaisedButton(
                 child: Text(
                   'Login',

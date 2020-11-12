@@ -1,10 +1,8 @@
+import 'dart:ui';
+
 import 'package:Kirana/customExports.dart';
-import 'package:Kirana/widgets/Drawer.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;  
+
 import 'package:flutter/material.dart';
-
-
 
 class Home extends StatefulWidget {
   @override
@@ -20,7 +18,9 @@ class _HomeState extends State<Home> {
       Future.delayed(Duration.zero, () {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => WelcomeScreen()),
+            MaterialPageRoute(
+              builder: (context) => WelcomeScreen(),
+            ),
             (Route<dynamic> rr) => false);
       });
     } else {
@@ -30,16 +30,9 @@ class _HomeState extends State<Home> {
   }
 
   Widget build(BuildContext context) {
-// ignore: unused_local_variable
-FirebaseStorage storage = FirebaseStorage.instance;
-   
-
     return Scaffold(
-      backgroundColor: ThemeKirana.page,
       drawer: Drawerwig(),
       appBar: AppBar(
-        title: Text('Hello'),
-        centerTitle: true,
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -52,22 +45,29 @@ FirebaseStorage storage = FirebaseStorage.instance;
               );
             },
           ),
+          IconButton(icon: Icon(Icons.search), onPressed: () {})
         ],
       ),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  
-                ],
-              ),
-            ],
+      body: Column(
+        children: [
+          Text(
+            'MostPopular',
+            style: TextStyle(
+              fontSize: 50,
+              color: ThemeKirana.page,
+            ),
           ),
-        ),
+          MostPopular(),
+          Text(
+            'Categories',
+            style: TextStyle(
+              fontSize: 35,
+              color: ThemeKirana.page,
+            ),
+          ),
+          Categories(),
+        ],
       ),
     );
   }
-
 }

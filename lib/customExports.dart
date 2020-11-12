@@ -8,8 +8,6 @@ export 'package:google_sign_in/google_sign_in.dart';
 
 export 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
-
-
 export 'Pages/Auth/signin&out.dart';
 
 // exports from pages folder
@@ -58,6 +56,10 @@ export 'widgets/Button.dart';
 export 'widgets/NotAMember.dart';
 
 export 'widgets/Drawer.dart';
+
+export 'package:Kirana/parts/mostPopular.dart';
+
+export 'package:Kirana/parts/categories.dart';
 
 export 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:flutter/material.dart';
