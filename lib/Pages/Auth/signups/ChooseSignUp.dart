@@ -63,7 +63,10 @@ class ChooseSignUp extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PSign()),
+                        MaterialPageRoute(
+                            builder: (context) => PSign(
+                                  name: 'SignUp',
+                                )),
                       );
                     },
                     icon: Icons.phone,

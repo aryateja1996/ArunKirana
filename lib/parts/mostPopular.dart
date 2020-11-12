@@ -12,40 +12,28 @@ class _MostPopularState extends State<MostPopular> {
       padding: const EdgeInsets.all(10.0),
       child: Row(
         children: <Widget>[
-          // Flexible(
-          //   child: ListView.builder(
-          //     scrollDirection: Axis.horizontal,
-          //     itemBuilder: (contex, index) {
-          //       return Container(
-          //         height: 150,
-          //         width: 150,
-          //         color: Colors.cyanAccent,
-          //       );
-          //     },
-          //   ),
-          // ),
           SizedBox(
-            width: 15,
+            width: 10,
           ),
           Container(
-            height: 150,
-            width: 150,
+            height: 100,
+            width: 100,
             color: Colors.white,
           ),
           SizedBox(
-            width: 15,
+            width: 10,
           ),
           Container(
-            height: 150,
-            width: 150,
+            height: 100,
+            width: 100,
             color: Colors.white,
           ),
           SizedBox(
-            width: 15,
+            width: 10,
           ),
           Container(
-            height: 150,
-            width: 150,
+            height: 100,
+            width: 100,
             child: Center(
                 child: Icon(
               Icons.navigate_next,

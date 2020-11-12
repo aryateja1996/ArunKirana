@@ -68,7 +68,7 @@ class _ChooseLoginState extends State<ChooseLogin> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => PhoneLogin(),
+                          builder: (context) => PSign(name: 'Login'),
                         ),
                       );
                     },

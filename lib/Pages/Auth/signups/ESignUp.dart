@@ -229,29 +229,35 @@ class _ESignUpState extends State<ESignUp> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PSign()),
+                                      builder: (context) =>
+                                          PSign(name: 'Sign Up')),
                                 );
                               },
                               icon: Icons.phone,
-                              width: 220.0,
+                              width: 150.0,
                               text: 'Use Phone',
                             ),
                             SizedBox(
                               width: 12,
                             ),
-                            SignInButtonBuilder(
-                              backgroundColor: Colors.blueGrey[700],
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => EmailLoginPage(),
-                                  ),
-                                );
-                              },
-                              icon: Icons.email,
-                              width: 220.0,
-                              text: 'Login',
+                            // SignInButtonBuilder(
+                            //   backgroundColor: Colors.blueGrey[700],
+                            //   onPressed: () {
+                            //     Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //         builder: (context) => EmailLoginPage(),
+                            //       ),
+                            //     );
+                            //   },
+                            //   icon: Icons.email,
+                            //   width: 150.0,
+                            //   text: 'Google',
+                            // ),
+                            SignInButton(
+                              Buttons.Google,
+                              text: 'Use Google',
+                              onPressed: googleSignin,
                             ),
                           ],
                         ),
@@ -296,5 +302,37 @@ class _ESignUpState extends State<ESignUp> {
           MaterialPageRoute(builder: (context) => EmailLoginPage()),
           (route) => false);
     }
+  }
+
+  Future<User> googleSignin() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = new GoogleSignIn();
+    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuthentication =
+        await googleSignInAccount.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuthentication.accessToken,
+        idToken: googleAuthentication.idToken);
+
+    final UserCredential authResult =
+        await _auth.signInWithCredential(credential);
+    final User user = authResult.user;
+    FirebaseFirestore.instance.collection("user").doc(result.user.uid).set({
+      "username": user.displayName,
+      "phone": user.phoneNumber,
+      "address": null,
+      "email": user.email,
+      "admin": false,
+    });
+    if (user != null) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Home(),
+          ),
+          (route) => false);
+    }
+    return user;
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:Kirana/customExports.dart';
-
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -30,6 +30,12 @@ class _HomeState extends State<Home> {
   }
 
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    firebase_storage.FirebaseStorage storage =
+        firebase_storage.FirebaseStorage.instance;
+    // ignore: unused_local_variable
+    var ref = firebase_storage.FirebaseStorage.instance.ref();
+
     return Scaffold(
       drawer: Drawerwig(),
       appBar: AppBar(

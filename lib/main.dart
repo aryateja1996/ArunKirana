@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:Kirana/customExports.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(Kirana());
 }
 
