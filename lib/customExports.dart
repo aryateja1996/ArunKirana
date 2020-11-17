@@ -2,6 +2,8 @@ export 'package:firebase_auth/firebase_auth.dart';
 
 export 'package:firebase_core/firebase_core.dart';
 
+export 'package:firebase_storage/firebase_storage.dart';
+
 export 'package:cloud_firestore/cloud_firestore.dart';
 
 export 'package:google_sign_in/google_sign_in.dart';
@@ -12,9 +14,13 @@ export 'Pages/Auth/signin&out.dart';
 
 // exports from pages folder
 
-export 'Pages/Welcome.dart';
+export 'Pages/UI/Welcome.dart';
 
-export 'Pages/HomePage.dart';
+export 'Pages/UI/HomePage.dart';
+
+export 'Pages/UI/splashScreen.dart';
+
+export 'Pages/UI/catergories.dart';
 
 // exports for Logins
 
@@ -43,7 +49,7 @@ export 'Pages/Additional/Loading.dart';
 export 'Pages/Additional/Error.dart';
 
 // exports for cart
-export 'Pages/cart.dart';
+export 'Pages/UI/cart.dart';
 
 export 'widgets/circle.dart';
 
