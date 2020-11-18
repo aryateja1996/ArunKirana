@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 class ListCat extends StatefulWidget {
   final String src;
-  ListCat({this.src});
+  final int itemCount;
+  ListCat({this.src, this.itemCount});
   @override
   _ListCatState createState() => _ListCatState();
 }
@@ -16,22 +17,44 @@ class _ListCatState extends State<ListCat> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.src),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Cart(),
+                ),
+              );
+            },
+          ),
+          IconButton(icon: Icon(Icons.search), onPressed: () {})
+        ],
       ),
       drawer: Drawerwig(),
-      body: ListView.builder(
-        itemCount: 11,
-        itemBuilder: (BuildContext context, int index) {
-          print(widget.src);
-          print(index);
-          return ImageBuilder(
-            index: index,
-            src: widget.src,
-          );
-        },
-      ),
+      body: widget.itemCount == 0
+          ? Center(
+              child: Text('No Items Here Comning Soon'),
+            )
+          : widget.src == 'Spices'
+              ? Text('data')
+              : ListView.builder(
+                  itemCount: widget.itemCount,
+                  itemBuilder: (BuildContext context, int index) {
+                    // print(widget.src);
+                    // print(index);
+                    return ImageBuilder(
+                      index: index,
+                      src: widget.src,
+                    );
+                  },
+                ),
     );
   }
 }
+
+//
 
 class ImageBuilder extends StatefulWidget {
   final String src;
@@ -52,7 +75,7 @@ class _ImageBuilderState extends State<ImageBuilder> {
   Uint8List imgFile;
   getImage() {
     refImg
-        .child(widget.src)
+        //.child(widget.src)
         .child('${widget.index}.jpg')
         .getData(maxSize)
         .then((data) {
@@ -82,12 +105,25 @@ class _ImageBuilderState extends State<ImageBuilder> {
       return Image.memory(
         imgFile,
         fit: BoxFit.contain,
-        height: 150,
+        height: 100,
         width: 180,
       );
     }
   }
 
+  List<String> productDescription = [
+    'Bourbon',
+    'Dark Fantasy',
+    'GoodDayKaju',
+    'GoodDayCashew',
+    'HappyHappy',
+    'Hide&Seek',
+    'KrackJack',
+    'MarieGold',
+    'Monaco',
+    'OreoVanilla',
+    'Parle-G'
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -101,8 +137,21 @@ class _ImageBuilderState extends State<ImageBuilder> {
             left: 0,
           ),
           Positioned(
-            child: Text('data'),
-            right: 0,
+            left: 200,
+            top: 50,
+            child: Container(
+              width: 100,
+              child: Text(
+                productDescription[widget.index],
+              ),
+            ),
+          ),
+          Container(
+            alignment: Alignment.centerRight,
+            child: FlatButton(
+              onPressed: () {},
+              child: Text('View \nProduct'),
+            ),
           ),
         ],
       ),

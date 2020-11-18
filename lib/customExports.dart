@@ -63,6 +63,10 @@ export 'widgets/NotAMember.dart';
 
 export 'widgets/Drawer.dart';
 
+//Models
+
+export 'models/model.dart';
+
 export 'package:Kirana/parts/mostPopular.dart';
 
 export 'package:Kirana/parts/categories.dart';
