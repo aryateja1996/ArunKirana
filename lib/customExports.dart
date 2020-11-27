@@ -51,6 +51,10 @@ export 'Pages/Additional/Error.dart';
 // exports for cart
 export 'Pages/UI/cart.dart';
 
+export 'parts/product.dart';
+
+export 'Pages/UI/product.dart';
+
 export 'widgets/circle.dart';
 
 export 'widgets/text.dart';

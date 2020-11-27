@@ -56,14 +56,7 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         children: [
-          Text(
-            'MostPopular',
-            style: TextStyle(
-              fontSize: 50,
-              color: ThemeKirana.page,
-            ),
-          ),
-          MostPopular(),
+          MostPopular() == null ? null : MostPopular(),
           Text(
             'Categories',
             style: TextStyle(

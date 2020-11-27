@@ -12,13 +12,34 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
+    DocumentReference ref =
+        FirebaseFirestore.instance.collection('details').doc('Categories');
     return Expanded(
       child: GridView.builder(
-        itemCount: storeIndex.length,
+        itemCount: 27,
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
         itemBuilder: (context, index) {
-          return ItemGrid(index: index);
+          return FutureBuilder(
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                Map<String, dynamic> data = snapshot.data.data();
+                List<String> names = List.from(data['names']);
+                // TODO
+                //remove comments and to take item count of products
+                //from firestore
+                // List<int> itemCounts = List.from(data['itemCount']);
+                // int passCount = itemCounts[index];
+                return ItemGrid(
+                  names: names,
+                  index: index,
+                  //passcount: passCount,
+                );
+              }
+              return CircularProgressIndicator();
+            },
+            future: ref.get(),
+          );
         },
       ),
     );
@@ -27,7 +48,9 @@ class _CategoriesState extends State<Categories> {
 
 class ItemGrid extends StatefulWidget {
   final int index;
-  ItemGrid({this.index});
+  final List<String> names;
+  final int passcount;
+  ItemGrid({this.index, this.names, this.passcount});
   @override
   _ItemGridState createState() => _ItemGridState();
 }
@@ -36,6 +59,7 @@ class _ItemGridState extends State<ItemGrid> {
   StorageReference refImg = FirebaseStorage.instance.ref().child('categories');
   int maxSize = 10 * 1024 * 1024;
   Uint8List imgFile;
+
   getImage() {
     refImg.child('${widget.index}.jpeg').getData(maxSize).then((data) {
       this.setState(() {
@@ -67,59 +91,27 @@ class _ItemGridState extends State<ItemGrid> {
     }
   }
 
-  List<Color> color = [
-    Colors.black, //0
-    Colors.white, //1
-    Colors.black, //2
-    Colors.white, //3
-    Colors.black, //4
-    Colors.black, //5
-    Colors.black, //6
-    Colors.black, //7
-    Colors.white, //8
-    Colors.black, //9
-    Colors.black, //10
-    Colors.black, //11
-    Colors.black, //12
-    Colors.black, //13
-    Colors.black, //14
-    Colors.black, //15
-    Colors.black, //16
-    Colors.black, //17
-    Colors.black, //18
-    Colors.black, //19
-    //
-    // Colors.white,
-    // Colors.black,
-    // Colors.white,
-    // Colors.black,
-  ];
-
   @override
   Widget build(BuildContext context) {
-    int colorIndex = widget.index;
     return Container(
       child: InkWell(
-        child: GridTile(
-          child: decideTile(),
-          header: Text(
-            storeIndex[widget.index],
-            style: TextStyle(
-              fontSize: 20,
-              color: color[colorIndex],
-              backgroundColor: colorIndex == 4 ||
-                      colorIndex == 5 ||
-                      colorIndex == 18 ||
-                      colorIndex == 17 ||
-                      //colorIndex == 16 ||
-                      colorIndex == 15 ||
-                      colorIndex == 13 ||
-                      colorIndex == 12 ||
-                      colorIndex == 8
-                  ? color[1]
-                  : Colors.transparent,
+        child: Column(
+          children: [
+            Container(
+              width: 110,
+              height: 110,
+              child: GridTile(
+                child: decideTile(),
+              ),
             ),
-          ),
+            Text(
+              widget.names[widget.index],
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.black,
+              ),
+            ),
+          ],
         ),
         onTap: () {
           print(widget.index);
@@ -127,8 +119,8 @@ class _ItemGridState extends State<ItemGrid> {
             context,
             MaterialPageRoute(
               builder: (context) => ListCat(
-                src: storeIndex[widget.index],
-                itemCount: itemIndex[widget.index],
+                src: widget.names[widget.index],
+                itemCount: itemIndex[widget.index], // TODO widget.passcount,
               ),
             ),
           );

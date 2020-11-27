@@ -1,47 +1,36 @@
+import 'package:Kirana/customExports.dart';
 import 'package:flutter/material.dart';
 
-class MostPopular extends StatefulWidget {
-  @override
-  _MostPopularState createState() => _MostPopularState();
-}
-
-class _MostPopularState extends State<MostPopular> {
-  @override
+class MostPopular extends StatelessWidget {
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Row(
-        children: <Widget>[
-          SizedBox(
-            width: 10,
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            color: Colors.white,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            color: Colors.white,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            child: Center(
-                child: Icon(
-              Icons.navigate_next,
-              size: 50,
-            )),
-          ),
-        ],
-      ),
-    );
+    CollectionReference ref = FirebaseFirestore.instance.collection('details');
+
+    return FutureBuilder(
+        future: ref.doc('offerBanner').get(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            Map<String, dynamic> data = snapshot.data.data();
+            String imgUrl = data['imgUrl'];
+            bool available = data['available'];
+            if (available) {
+              return Container(
+                child: imgUrl == null
+                    ? null
+                    : Image.network(
+                        imgUrl,
+                        fit: BoxFit.fill,
+                      ),
+              );
+            }
+            return Container(
+              width: 0.0,
+              height: 0.0,
+            );
+          }
+          return Container(
+            width: 0.0,
+            height: 0.0,
+          );
+        });
   }
 }

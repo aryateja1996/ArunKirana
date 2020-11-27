@@ -40,10 +40,12 @@ class _ListCatState extends State<ListCat> {
           : widget.src == 'Spices'
               ? Text('data')
               : ListView.builder(
-                  itemCount: widget.itemCount,
+                  itemCount: widget.src == 'Tooth paste & Tooth Brushes'
+                      ? 11
+                      : widget.itemCount,
                   itemBuilder: (BuildContext context, int index) {
-                    // print(widget.src);
-                    // print(index);
+                    //print(widget.src);
+                    //print(index);
                     return ImageBuilder(
                       index: index,
                       src: widget.src,
@@ -75,7 +77,7 @@ class _ImageBuilderState extends State<ImageBuilder> {
   Uint8List imgFile;
   getImage() {
     refImg
-        //.child(widget.src)
+        .child(widget.src)
         .child('${widget.index}.jpg')
         .getData(maxSize)
         .then((data) {
@@ -122,7 +124,18 @@ class _ImageBuilderState extends State<ImageBuilder> {
     'MarieGold',
     'Monaco',
     'OreoVanilla',
-    'Parle-G'
+    'Parle-G',
+    'Bourbon',
+    'Dark Fantasy',
+    'GoodDayKaju',
+    'GoodDayCashew',
+    'HappyHappy',
+    'Hide&Seek',
+    'KrackJack',
+    'MarieGold',
+    'Monaco',
+    'OreoVanilla',
+    'Parle-G',
   ];
   @override
   Widget build(BuildContext context) {
@@ -149,7 +162,16 @@ class _ImageBuilderState extends State<ImageBuilder> {
           Container(
             alignment: Alignment.centerRight,
             child: FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Product(
+                      src: productDescription[widget.index],
+                    ),
+                  ),
+                );
+              },
               child: Text('View \nProduct'),
             ),
           ),
