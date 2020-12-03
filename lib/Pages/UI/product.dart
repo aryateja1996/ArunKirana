@@ -2,20 +2,18 @@ import 'package:Kirana/customExports.dart';
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatefulWidget {
-  final List<bool> availabilityByPrice;
   final List<int> priceList;
   final bool availability;
   final String name;
   final String imgUrl;
-  final String description;
-  final int discount;
+  // final String description;
+  final List<double> discount;
   ProductPage({
-    this.availabilityByPrice,
     this.priceList,
     this.availability,
     this.name,
     this.imgUrl,
-    this.description,
+    // this.description,
     this.discount,
   });
   @override
@@ -24,8 +22,9 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  int toSub = 0;
+  double toSub = 0.0;
   int quantity = 1;
+  double discountForThePrice = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -68,19 +67,19 @@ class _ProductPageState extends State<ProductPage> {
             SizedBox(
               height: 20,
             ),
-            Text(
-              widget.description,
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
+            // Text(
+            //   widget.description,
+            //   style: TextStyle(
+            //     fontSize: 20,
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 20,
+            // ),
             Text(
               'Prices',
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 20,
               ),
             ),
             // SizedBox(
@@ -95,9 +94,14 @@ class _ProductPageState extends State<ProductPage> {
                 itemBuilder: (context, index) {
                   return FlatButton(
                     onPressed: () {
-                      setState(() {
-                        toSub = widget.priceList[index] - widget.discount;
-                      });
+                      setState(
+                        () {
+                          toSub = (widget.priceList[index]).toDouble() -
+                              (widget.discount[index]);
+
+                          discountForThePrice = widget.discount[index];
+                        },
+                      );
                     },
                     child: Text(
                       'Rs ' + '${widget.priceList[index].toString()}' + '/-',
@@ -113,23 +117,33 @@ class _ProductPageState extends State<ProductPage> {
               height: 20,
             ),
             Container(
-              padding: EdgeInsets.only(right: 50),
+              //padding: EdgeInsets.only(right: 50),
               width: double.infinity,
               alignment: Alignment.centerRight,
               child: Row(
                 children: [
                   Container(
-                    width: 250,
+                    // width: 250,
                     //height: 500,
                     child: Row(
                       children: [
-                        IconButton(
-                          icon: Icon(Icons.minimize),
-                          onPressed: () {
-                            setState(() {
-                              quantity--;
-                            });
-                          },
+                        Container(
+                          child: Stack(
+                            children: <Widget>[
+                              Positioned(
+                                child: IconButton(
+                                  icon: Icon(Icons.minimize),
+                                  onPressed: () {
+                                    setState(
+                                      () {
+                                        quantity--;
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         Text(quantity.toString()),
                         IconButton(
@@ -144,6 +158,16 @@ class _ProductPageState extends State<ProductPage> {
                         ),
                       ],
                     ),
+                  ),
+                  Text(
+                    "You Save Rs ${discountForThePrice.toString()} /-",
+                    style: TextStyle(
+                      color: Colors.green[300],
+                      fontSize: 15,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 25,
                   ),
                   toSub == 0
                       ? Text(
@@ -198,7 +222,6 @@ class _ProductPageState extends State<ProductPage> {
                   child: FlatButton(
                     child: Text('Add To Cart'),
                     onPressed: () {
-                      updateCart();
                       setState(() {
                         var snackBar = SnackBar(
                           content: Container(
@@ -228,14 +251,5 @@ class _ProductPageState extends State<ProductPage> {
         ),
       ),
     );
-  }
-
-  updateCart() {
-    User user = FirebaseAuth.instance.currentUser;
-    FirebaseFirestore.instance.collection("Cart").doc(user.uid).set({
-      'productName': widget.name,
-      'quanty': quantity,
-      'price': toSub,
-    });
   }
 }

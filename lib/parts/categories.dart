@@ -28,12 +28,12 @@ class _CategoriesState extends State<Categories> {
                 // TODO
                 //remove comments and to take item count of products
                 //from firestore
-                // List<int> itemCounts = List.from(data['itemCount']);
-                // int passCount = itemCounts[index];
+                //List<int> itemCounts = List.from(data['itemCount']);
+                //int passCount = itemCounts[index];
                 return ItemGrid(
                   names: names,
                   index: index,
-                  //passcount: passCount,
+                  // passcount: passCount,
                 );
               }
               return CircularProgressIndicator();
@@ -120,7 +120,7 @@ class _ItemGridState extends State<ItemGrid> {
             MaterialPageRoute(
               builder: (context) => ListCat(
                 src: widget.names[widget.index],
-                itemCount: itemIndex[widget.index], // TODO widget.passcount,
+                itemCount: itemIndex[widget.index], // TODO widget.pass count,
               ),
             ),
           );

@@ -21,17 +21,19 @@ class _ProductState extends State<Product> {
         }
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data = snapshot.data.data();
-          List<bool> availabilityOfPrice = List.from(data['priceAvailable']);
+          // List<bool> availabilityOfPrice = List.from(data['priceAvailable']);
           List<int> priceList = List.from(data['prices']);
-
+          List<double> discountList = (List.from(data['discount']));
+          //  var disc = List<double>.from(discountList);
+          print((discountList.runtimeType));
           return ProductPage(
-            description: data['description'],
-            availabilityByPrice: availabilityOfPrice,
+            //description: data['description'],
+            // availabilityByPrice: availabilityOfPrice,
             priceList: priceList,
             availability: data['available'],
             name: data['name'],
             imgUrl: data['imgUrl'],
-            discount: data['discountAmount'],
+            discount: discountList,
           );
         }
         return CircularProgressIndicator();

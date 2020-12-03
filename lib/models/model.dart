@@ -22,3 +22,16 @@ List<int> itemIndex = [
   3, //20
   6, //21
 ];
+
+class CartDetails {
+  String name;
+  int price;
+  int discount;
+  int quantity;
+  CartDetails(this.name, this.discount, this.price, this.quantity);
+  List<CartDetails> cart = [];
+
+  void getProduct(name, discount, price, quantity) {
+    cart.add(CartDetails(name, discount, price, quantity));
+  }
+}

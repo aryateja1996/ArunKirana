@@ -118,7 +118,7 @@ class _ImageBuilderState extends State<ImageBuilder> {
     'Dark Fantasy',
     'GoodDayKaju',
     'GoodDayCashew',
-    'HappyHappy',
+    'Happy Happy',
     'Hide&Seek',
     'KrackJack',
     'MarieGold',
